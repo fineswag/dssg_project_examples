@@ -85,11 +85,6 @@ for line in reader:
 	else: 
 		print "F"		
 
-for line in reader:
-	
-		
-
-
 # Here, we start a loop that will go through each row of the csv file and extract the 
 # ids of the posters in the file as well as the date of the first and most recent threads
 # in which they appear. Each poster is added to the node list and their start/end dates
@@ -97,20 +92,21 @@ for line in reader:
 # table which does not have dates, simply add an empty column with header dates. This will
 # attach null cells to the row. 
 
-# for line in reader:
-# 	# Need to change so that using each author_id
-#     posters = line['posters']
-#     peeps = posters.split(" ")  
-#     	         		
-#     for person in peeps:
-#         if person not in nodelist:
-#             nodelist[person]["start"] = line['dates']
-#             nodelist[person]["end"] = line['dates']
-#         else:
-#             if nodelist[person]["start"]>line['dates']:
-#                 nodelist[person]["start"]=line['dates']
-#             if nodelist[person]["end"]<line['dates']:
-#                 nodelist[person]["end"]=line['dates']
+for line in reader:
+	
+	# Need to change so that using each author_id
+    posters = line['posters']
+    peeps = posters.split(" ")  
+    	         		
+    for person in peeps:
+        if person not in nodelist:
+            nodelist[person]["start"] = line['dates']
+            nodelist[person]["end"] = line['dates']
+        else:
+            if nodelist[person]["start"]>line['dates']:
+                nodelist[person]["start"]=line['dates']
+            if nodelist[person]["end"]<line['dates']:
+                nodelist[person]["end"]=line['dates']
 
 
 # Right now, the only attributes associated with each node are its start and end date. As 
